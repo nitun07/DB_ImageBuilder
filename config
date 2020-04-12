@@ -1,0 +1,29 @@
+# Output image name
+IMG_NAME=DroneBridge
+
+KERNEL_REPO=https://github.com/nitun07/linux.git
+
+
+BASE_IMAGE_URL="http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2020-02-14/"
+BASE_IMAGE="2020-02-13-raspbian-buster-lite"
+KERNEL_BRANCH=raspberrypi-kernel_1.20200212-1
+
+# Amount of cores to use for compilation on host machine
+J_CORES=4
+
+APT_CACHER_NG_URL=http://127.0.0.1:3142
+APT_CACHER_NG_ENABLED=false
+
+
+PI_TOOLS_REPO=https://github.com/raspberrypi/tools.git
+PI_TOOLS_BRANCH=master
+
+DRONEBRIDGE_REPO=https://github.com/nitun07/DroneBridge.git
+DRONEBRIDGE_BRANCH=v0.6.0
+
+OPENVG_REPO=https://github.com/nitun07/openvg.git
+OPENVG_BRANCH=screenshot
+
+RTL_8812AU_REPO=https://github.com/nitun07/rtl8812au.git
+RTL_8812AU_BRANCH=v5.3.4
+

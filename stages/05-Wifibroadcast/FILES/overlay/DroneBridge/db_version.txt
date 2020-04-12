@@ -1,0 +1,3 @@
+0.6.0
+# v0.6.0 Alpha
+# Do not edit this document!
