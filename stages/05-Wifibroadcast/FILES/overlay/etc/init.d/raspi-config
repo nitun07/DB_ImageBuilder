@@ -27,9 +27,10 @@ case "$1" in
         echo 50 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
       fi
       log_end_msg 0
+      
+     cd /home/pi/DroneBridge/splash
+     ./db_splash
     fi
-    cd /home/pi/DroneBridge/splash
-    ./db_splash
     ;;
   stop)
     ;;
