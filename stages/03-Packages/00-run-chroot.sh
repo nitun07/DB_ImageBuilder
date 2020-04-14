@@ -30,7 +30,7 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get -y --no-install-recommends install l
 
 DEBIAN_FRONTEND=noninteractive sudo apt-get -y --no-install-recommends install git python-m2crypto bc raspberrypi-kernel-headers dkms || exit 1
 
-sudo pip3 install pyric pycryptodomex
+sudo pip3 install pyric pycryptodomex setuptools wheel
 
 
 DEBIAN_FRONTEND=noninteractive sudo apt-get -yq clean || exit 1

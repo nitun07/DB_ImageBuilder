@@ -1,5 +1,8 @@
 # On chroot
 
+#Ensure the runlevel is multi-target (3) could possibly be lower...
+sudo systemctl set-default multi-user.target
+
 
 #disable unneeded services
 sudo systemctl disable cron.service
@@ -7,12 +10,9 @@ sudo systemctl disable cron.service
 
 #hosstapd fix
 sudo systemctl unmask hostapd
-sudo systemctl enable hostapd
-sudo systemctl start hostapd
-
-
-#enable /dev/video0
-#sudo modprobe bcm2835-v4l2
+sudo systemctl stop hostapd
+sudo systemctl stop hostapd
+sudo systemctl disable hostapd
 
 
 

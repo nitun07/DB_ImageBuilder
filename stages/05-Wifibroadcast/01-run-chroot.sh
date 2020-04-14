@@ -8,6 +8,8 @@
 cd /home/pi
 cd DroneBridge
 sudo cmake . && make
+cd communication/DroneBridgeLib
+sudo pip3 install .
 sudo cp start_db /etc/init.d/start_db
 sudo chmod 755 /etc/init.d/start_db
 

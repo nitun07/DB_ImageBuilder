@@ -176,6 +176,8 @@ DRONEBRIDGE_VERSION=$(cat ${WORK_DIR}/dronebridge_version.txt)
 if [ -f "${PREV_WORK_DIR}/IMAGE.img" ]; then
     mkdir -p "${DEPLOY_DIR}" || true
     cp "${PREV_WORK_DIR}/IMAGE.img" "${DEPLOY_DIR}/${IMG_NAME}-${DRONEBRIDGE_VERSION}.img"
+    zip -9 "${DEPLOY_DIR}/${IMG_NAME}-${DRONEBRIDGE_VERSION}.zip" "${DEPLOY_DIR}/${IMG_NAME}-${DRONEBRIDGE_VERSION}.img"
+    rm "${DEPLOY_DIR}/${IMG_NAME}-${DRONEBRIDGE_VERSION}.img"
 fi
 
 #  Clean up SKIP_STEP files since we finished the build

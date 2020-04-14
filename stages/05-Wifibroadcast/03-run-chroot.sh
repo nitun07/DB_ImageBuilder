@@ -3,11 +3,6 @@
 sudo rm /etc/init.d/resize2fs_once
 
 
-# Make symbolic link for osdconfig.txt
-sudo rm /home/pi/DroneBridge/osd/osdconfig.h
-sudo ln -s /DroneBridge/osdconfig.txt /home/pi/DroneBridge/osd/osdconfig.h
-
-
 #enable txpower from command line and RemoteSettings app
 sudo chmod 755 /usr/local/bin/txpower_atheros
 sudo chmod 755 /usr/local/bin/txpower_ralink

@@ -68,6 +68,10 @@ unmount_image(){
         umount -l "$MNT_DIR/boot"
     fi
 
+    if mount | grep -q "$MNT_DIR/DroneBridge"; then
+        umount -l "$MNT_DIR/DroneBridge"
+    fi
+
     if mount | grep -q "$MNT_DIR"; then
         umount -l "$MNT_DIR/"
     fi
