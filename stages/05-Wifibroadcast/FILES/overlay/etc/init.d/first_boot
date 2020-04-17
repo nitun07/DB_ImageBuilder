@@ -6,7 +6,7 @@
 # Should-Start:     $local_fs
 # Default-Start: 3
 # Default-Stop:
-# Short-Description: Resize the exfat filesystem to fill partition
+# Short-Description: Resize ExFAT partition to fillup the SDcard
 # Description:
 ### END INIT INFO
 . /lib/lsb/init-functions
@@ -20,7 +20,10 @@ case "$1" in
     (echo d; echo 3; echo n; echo p; echo 3; echo $EXFAT_OFFSET; echo ""; echo t; echo 3; echo 7; echo w) | fdisk /dev/mmcblk0 &&
     mkfs.exfat /dev/mmcblk0p3 &&
     exfatlabel /dev/mmcblk0p3 "DroneBridge" &&
-    rsync -r /media/DroneBridge /DroneBridge &&
+    if ! grep -qs '/DroneBridge ' /proc/mounts;
+    then mount /dev/mmcblk0p3 /DroneBridge
+    fi
+    rsync -a /media/DroneBridge/ /DroneBridge &&
     rm -rf /media/DroneBridge &&
     update-rc.d first_boot remove &&
     rm /etc/init.d/first_boot &&
