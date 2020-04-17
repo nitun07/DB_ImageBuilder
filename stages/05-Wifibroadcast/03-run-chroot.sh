@@ -10,6 +10,7 @@ sudo chmod 755 /usr/local/bin/txpower_ralink
 
 #other permissions
 sudo chmod 755 /etc/init.d/raspi-config
+sudo chmod 755 /etc/init.d/first_boot
 sudo chmod 664 /etc/dhcpcd.conf
 sudo chmod 755 /boot/cmdline.txt
 sudo chmod 755 /boot/config.txt

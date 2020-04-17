@@ -1,0 +1,33 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          first_boot
+# Required-Start:   $local_fs
+# Required-Stop:
+# Should-Start:     $local_fs
+# Default-Start: 3
+# Default-Stop:
+# Short-Description: Resize the exfat filesystem to fill partition
+# Description:
+### END INIT INFO
+. /lib/lsb/init-functions
+case "$1" in
+  start)
+    log_daemon_msg "Starting first_boot" &&
+    cp -raf /DroneBridge /media/ &&
+    rm -rf /media/DroneBridge/log &&
+    PARTED_OUT=$(parted -s /dev/mmcblk0 unit s print) &&
+    EXFAT_OFFSET=$(echo "$PARTED_OUT" | grep -e '^ 3'| xargs echo -n | cut -d" " -f 2 | tr -d s) &&
+    (echo d; echo 3; echo n; echo p; echo 3; echo $EXFAT_OFFSET; echo ""; echo t; echo 3; echo 7; echo w) | fdisk /dev/mmcblk0 &&
+    mkfs.exfat /dev/mmcblk0p3 &&
+    exfatlabel /dev/mmcblk0p3 "DroneBridge" &&
+    rsync -r /media/DroneBridge /DroneBridge &&
+    rm -rf /media/DroneBridge &&
+    update-rc.d first_boot remove &&
+    rm /etc/init.d/first_boot &&
+    log_end_msg $?
+    ;;
+  *)
+    echo "Usage: $0 start" >&2
+    exit 3
+    ;;
+esac
