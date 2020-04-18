@@ -1,18 +1,18 @@
 #!/bin/sh
 ### BEGIN INIT INFO
-# Provides:          first_boot
+# Provides:          resize_exfat
 # Required-Start:   $local_fs
 # Required-Stop:
 # Should-Start:     $local_fs
 # Default-Start: 3
 # Default-Stop:
-# Short-Description: Resize ExFAT partition to fillup the SDcard
+# Short-Description: Resize the exfat filesystem to fill partition
 # Description:
 ### END INIT INFO
 . /lib/lsb/init-functions
 case "$1" in
   start)
-    log_daemon_msg "Starting first_boot" &&
+    log_daemon_msg "Starting resize_exfat" &&
     cp -raf /DroneBridge /media/ &&
     rm -rf /media/DroneBridge/log &&
     PARTED_OUT=$(parted -s /dev/mmcblk0 unit s print) &&
@@ -25,8 +25,8 @@ case "$1" in
     fi
     rsync -a /media/DroneBridge/ /DroneBridge &&
     rm -rf /media/DroneBridge &&
-    update-rc.d first_boot remove &&
-    rm /etc/init.d/first_boot &&
+    update-rc.d resize_exfat remove &&
+    rm /etc/init.d/resize_exfat &&
     log_end_msg $?
     ;;
   *)
