@@ -109,6 +109,8 @@ mkdir -p "${WORK_DIR}"
 # image for a different distro or board, we can just reset the stage
 export LINUX_DIR="linux-${KERNEL_BRANCH}"
 
+# realtek driver directory
+export REALTEK_DIR="${LINUX_DIR}/drivers/net/wireless/realtek"
 
 # used in the stage 5 scripts to place a version file inside the image, and below after the
 # stages have run, in the name of the image itself

@@ -15,9 +15,6 @@ log "Download openvg"
 git clone --depth=1 -b ${OPENVG_BRANCH} ${OPENVG_REPO} || exit 1
 
 
-log "Download rtl8812au"
-git clone --depth=1 -b ${RTL_8812AU_BRANCH} ${RTL_8812AU_REPO} || exit 1
-
 
 
 #return
