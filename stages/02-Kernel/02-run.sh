@@ -16,7 +16,7 @@ KERNEL=kernel7 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- make bcm2709_defconfi
 sudo sed -i 's/CONFIG_DEFAULT_HOSTNAME="(none)"/CONFIG_DEFAULT_HOSTNAME="DroneBridge"/' .config
 sudo sed -i 's/# CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE is not set/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y/' .config
 sudo sed -i 's/CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE=y/# CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE is not set/' .config
-sudo sed -i 's/# CONFIG_88XXAU is not set/CONFIG_88XXAU=y/' .config
+sudo sed -i 's/# CONFIG_RTL8812AU is not set/CONFIG_RTL8812AU=m/' .config
 
 
 yes "" | KERNEL=kernel7 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- make -j $J_CORES zImage modules dtbs

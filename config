@@ -18,12 +18,12 @@ APT_CACHER_NG_ENABLED=false
 PI_TOOLS_REPO=https://github.com/raspberrypi/tools.git
 PI_TOOLS_BRANCH=master
 
-DRONEBRIDGE_REPO=https://github.com/nitun07/DroneBridge.git
+DRONEBRIDGE_REPO=https://github.com/DroneBridge/DroneBridge.git
 DRONEBRIDGE_BRANCH=v0.6.0
 
 OPENVG_REPO=https://github.com/nitun07/openvg.git
 OPENVG_BRANCH=screenshot
 
 RTL_8812AU_REPO=https://github.com/nitun07/rtl8812au.git
-RTL_8812AU_BRANCH=v5.6.4.2
+RTL_8812AU_BRANCH=v1.0-DEV
 

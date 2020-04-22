@@ -9,10 +9,12 @@ if [ ! -d "${LINUX_DIR}" ]; then
     git clone --depth=1 -b ${KERNEL_BRANCH} ${KERNEL_REPO} ${LINUX_DIR}
 fi
 
-pushd ${REALTEK_DIR}
+if [ ! -d rtl8812au ]; then
 log "Download rtl8812au"
 git clone --depth=1 -b ${RTL_8812AU_BRANCH} ${RTL_8812AU_REPO} || exit 1
-popd
+fi
+
+cp -raf rtl8812au ${REALTEK_DIR}
 
 pushd ${LINUX_DIR}
 
