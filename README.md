@@ -22,6 +22,9 @@ sudo -s
 ./build.sh
 ```
 
+## Final Image
+Final compressed Image can be found in ```deploy``` directory.
+
 ## References
 Thanks to Open.HD for the base idea.
 
