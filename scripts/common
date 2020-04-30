@@ -23,7 +23,7 @@ mount_image () {
 
     log "/boot: offset $BOOT_OFFSET, length $BOOT_LENGTH"
     log "/:     offset $ROOT_OFFSET, length $ROOT_LENGTH"
-    log "/DroneBridge:     offset $EXFAT_OFFSET, length $ROOT_LENGTH"
+    log "/DroneBridge:     offset $EXFAT_OFFSET, length $EXFAT_LENGTH"
 
     # Make sure the mount point is there
     MNT_DIR="${STAGE_WORK_DIR}/mnt"
@@ -46,7 +46,7 @@ mount_image () {
     # mount the BOOT partition
     mountpoint -q "${MNT_DIR}/boot" || mount "$IMG_FILE" -o loop,offset=${BOOT_OFFSET},rw,sizelimit=${BOOT_LENGTH} "${MNT_DIR}/boot"
 
-# mount the DroneBridge partition
+    # mount the DroneBridge partition
     mkdir -p "${MNT_DIR}/DroneBridge"
     if [ "${EXFAT_FORMAT}"=1 ]; then
     mkfs.exfat "$EXFAT_DEV"
