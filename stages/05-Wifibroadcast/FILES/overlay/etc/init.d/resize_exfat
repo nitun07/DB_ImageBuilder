@@ -16,20 +16,20 @@ case "$1" in
     cp -raf /DroneBridge /media/ &&
     rm -rf /media/DroneBridge/log &&
     sleep 5 &&
-    umount /Dronebridge &&
+    umount -l /DroneBridge &&
     PARTED_OUT=$(parted -s /dev/mmcblk0 unit s print) &&
     EXFAT_OFFSET=$(echo "$PARTED_OUT" | grep -e '^ 3'| xargs echo -n | cut -d" " -f 2 | tr -d s) &&
-    (echo d; echo 3; echo n; echo p; echo 3; echo $EXFAT_OFFSET; echo ""; echo t; echo 3; echo 7; echo w) | fdisk /dev/mmcblk0 &&
+    (echo d; echo 3; echo n; echo p; echo 3; echo $EXFAT_OFFSET; echo ""; echo w) | fdisk /dev/mmcblk0 &&
     mkfs.exfat /dev/mmcblk0p3 &&
-    exfatlabel /dev/mmcblk0p3 "DroneBridge" &&
-    if ! grep -qs '/DroneBridge ' /proc/mounts;
-    then mount /dev/mmcblk0p3 /DroneBridge
-    fi
+    exfatlabel /dev/mmcblk0p3 "DroneBridge" &&d
+    mountpoint -q /DroneBridge || mount /dev/mmcblk0p3 /DroneBridge &&
+    sleep 5 &&
     rsync -a /media/DroneBridge/ /DroneBridge &&
     rm -rf /media/DroneBridge &&
     update-rc.d resize_exfat remove &&
     rm /etc/init.d/resize_exfat &&
     log_end_msg $?
+    reboot now
     ;;
   *)
     echo "Usage: $0 start" >&2
